@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { api, fmtDate, copyText, waLink, BENTUK_LABEL } from '@/lib/client';
@@ -56,7 +57,7 @@ export default function AsesmenDetail() {
   }
 
   if (!data || !form) return <div className="content"><Loading /></div>;
-  const { asesmen, kisi, soal, rekap, koreksi, leaderboard, refleksi, link, butir } = data;, soal, rekap, koreksi, leaderboard, refleksi, link } = data;
+  const { asesmen, kisi, soal, rekap, koreksi, leaderboard, refleksi, link, butir } = data;
   const menungguKoreksi = koreksi.filter((k) => k.status === 'selesai');
 
   function simpanPengaturan() {
