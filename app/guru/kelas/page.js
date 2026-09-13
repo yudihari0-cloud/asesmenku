@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { api, fmtDate } from '@/lib/client';
 import { Loading, Empty, Modal, Toast } from '@/components/ui';
