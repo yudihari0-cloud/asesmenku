@@ -20,7 +20,7 @@ const MENU = {
   ],
 };
 
-export default function SideNav({ role, nama, inisial, foto, logo, sekolahNama }) {
+export default function SideNav({ role, nama, inisial, foto, logo, sekolahNama, admin }) {
   const path = usePathname();
   const router = useRouter();
 
@@ -28,6 +28,9 @@ export default function SideNav({ role, nama, inisial, foto, logo, sekolahNama }
     await api('/api/auth', { method: 'POST', body: { action: 'logout' } }).catch(() => {});
     router.push('/login');
   }
+
+  const menu = [...(MENU[role] || [])];
+  if (role === 'guru' && admin) menu.push(['/guru/admin', '🔑', 'Panel Aktivasi']);
 
   return (
     <aside className="sidebar">
@@ -43,7 +46,7 @@ export default function SideNav({ role, nama, inisial, foto, logo, sekolahNama }
         </div>
       </div>
       <nav className="nav">
-        {(MENU[role] || []).map(([href, icon, label], i) =>
+        {menu.map(([href, icon, label], i) =>
           href === 'sep' ? (
             <div key={'s' + i} className="sep">{icon}</div>
           ) : (
