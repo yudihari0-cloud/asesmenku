@@ -56,7 +56,7 @@ export default function AsesmenDetail() {
   }
 
   if (!data || !form) return <div className="content"><Loading /></div>;
-  const { asesmen, kisi, soal, rekap, koreksi, leaderboard, refleksi, link } = data;
+  const { asesmen, kisi, soal, rekap, koreksi, leaderboard, refleksi, link, butir } = data;, soal, rekap, koreksi, leaderboard, refleksi, link } = data;
   const menungguKoreksi = koreksi.filter((k) => k.status === 'selesai');
 
   function simpanPengaturan() {
