@@ -48,7 +48,11 @@ export async function POST(req) {
       kedaluwarsa: '',
       createdAt: now,
     };
-    await store.insert('aktivasi', doc);
+    try {
+      await store.insert('aktivasi', doc);
+    } catch (e) {
+      return bad('INSERT GAGAL: ' + String((e && e.stack) || e?.message || e).slice(0, 400), 500);
+    }
     codes.push(doc);
   }
   return ok({ codes });
