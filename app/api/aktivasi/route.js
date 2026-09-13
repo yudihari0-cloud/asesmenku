@@ -8,7 +8,7 @@ import { id, kodeAktivasi } from '@/lib/ids';
  * DELETE — hapus kode yang masih tersedia (?id=)
  */
 function guard(user) {
-  return user && user.admin ? null : bad('Halaman khusus admin', 403);
+  return user && user.role !== 'siswa' && user.admin === true ? null : bad('Halaman khusus admin', 403);
 }
 
 export async function GET(req) {
